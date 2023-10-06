@@ -1,0 +1,31 @@
+name: Haskell CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: freckle/stack-action@v4
+
+    - name: Build
+      run: |
+        stack build
+    - name: Install HLint and lint
+      run: |
+        stack install hlint
+        hlint . --report
+    - name: Run tests
+      run: |
+        stack test
+        
