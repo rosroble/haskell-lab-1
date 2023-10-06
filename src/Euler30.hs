@@ -32,18 +32,18 @@ sumPower p arr
 
 solveRec p n
         | n == 10 = 0
-        | otherwise = solveRec p (n - 1) + if sumPower (p) (toDigits n) == n then n else 0
+        | otherwise = solveRec p (n - 1) + if sumPower p (toDigits n) == n then n else 0
 
 solveRecTail p n = helper p n 0
     where
         helper _ 10 s = s
         helper p n s = helper p (n - 1) (s + if n == sumPower p (toDigits n) then n else 0)
 
-solveMap p n = sum $ map snd (filter (\x -> uncurry (==) x) (map (\x -> (x, sumPower p (toDigits x))) [10..n]))
+solveMap p n = sum $ map snd (filter (uncurry (==)) (map (\x -> (x, sumPower p (toDigits x))) [10..n]))
 
 solveListGen p n = sum [x | x <- [10..n-1], sumPower p (toDigits x) == x]
 
-solveInfList p n = sum $ map snd $ filter (\x -> uncurry (==) x) $ take n $ map (\x -> (x, sumPower p (toDigits x))) [10..]
+solveInfList p n = sum $ map snd $ filter (uncurry (==)) $ take n $ map (\x -> (x, sumPower p (toDigits x))) [10..]
 
 
 
