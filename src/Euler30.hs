@@ -22,28 +22,28 @@ powInt a n
     | n == 0 = 1
     | otherwise = a * powInt a (n - 1)
 
-toDigits x 
+toDigits x
     | x == 0 = []
     | otherwise = toDigits (div x 10) ++ [mod x 10]
 
-sumPower p arr 
-    | arr == [] = 0
+sumPower p arr
+    | null arr = 0
     | otherwise = powInt (last arr) p + sumPower p (init arr)
 
-solveRec p n 
+solveRec p n
         | n == 10 = 0
-        | otherwise = solveRec p (n - 1) + if (sumPower (p) (toDigits n)) == n then n else 0 
+        | otherwise = solveRec p (n - 1) + if sumPower (p) (toDigits n) == n then n else 0
 
 solveRecTail p n = helper p n 0
     where
         helper _ 10 s = s
-        helper p n s = helper p (n - 1) (s + if n == sumPower (p) (toDigits n) then n else 0)
+        helper p n s = helper p (n - 1) (s + if n == sumPower p (toDigits n) then n else 0)
 
-solveMap p n = sum $ map snd (filter (\x -> fst x == snd x) (map (\x -> (x, sumPower p (toDigits x))) [10..n]))
+solveMap p n = sum $ map snd (filter (\x -> uncurry (==) x) (map (\x -> (x, sumPower p (toDigits x))) [10..n]))
 
-solveListGen p n = sum [x | x <- [10..n-1], sumPower (p) (toDigits x) == x]
+solveListGen p n = sum [x | x <- [10..n-1], sumPower p (toDigits x) == x]
 
-solveInfList p n = sum $ map snd $ filter (\x -> fst x == snd x) $ take n $ map (\x -> (x, sumPower p (toDigits x))) [10..]
+solveInfList p n = sum $ map snd $ filter (\x -> uncurry (==) x) $ take n $ map (\x -> (x, sumPower p (toDigits x))) [10..]
 
 
 

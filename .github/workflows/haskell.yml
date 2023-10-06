@@ -16,16 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: freckle/stack-action@v4
+    - uses: freckle/stack-action@v4 # Includes stack build + stack test
 
-    - name: Build
-      run: |
-        stack build
     - name: Install HLint and lint
       run: |
         stack install hlint
         hlint . --report
-    - name: Run tests
-      run: |
-        stack test
         
