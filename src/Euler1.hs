@@ -1,4 +1,4 @@
-
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
 module Euler1
     (findSumMultiplies3or5below_rec,
      findSumMultiplies3or5below_tail,
