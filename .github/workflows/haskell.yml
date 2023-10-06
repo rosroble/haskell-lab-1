@@ -18,8 +18,15 @@ jobs:
     - uses: actions/checkout@v3
     - uses: freckle/stack-action@v4 # Includes stack build + stack test
 
-    - name: Install HLint and lint
-      run: |
-        stack install hlint
-        hlint . --report
+    - name: 'Set up HLint'
+      uses: rwe/actions-hlint-setup@v1
+      with:
+        version: '3.1.6'
+
+    - name: 'Run HLint'
+      uses: rwe/actions-hlint-run@v2
+      with:
+        path: src/
+        fail-on: warning
+
         
