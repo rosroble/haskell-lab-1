@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
 -- Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
 -- Since 6*9^5 = 354929 < 999999 - maximum 6-digit number, there is no point in searching above this limit
 module Euler30
@@ -35,7 +36,7 @@ solveRec p n
 
 solveRecTail p n = helper p n 0
     where
-        helper p 10 s = s
+        helper _ 10 s = s
         helper p n s = helper p (n - 1) (s + if n == sumPower (p) (toDigits n) then n else 0)
 
 solveMap p n = sum $ map snd (filter (\x -> fst x == snd x) (map (\x -> (x, sumPower p (toDigits x))) [10..n]))
