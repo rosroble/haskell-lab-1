@@ -19,11 +19,11 @@ jobs:
     
     - name: "Setup Haskell & Run tests"
       uses: actions/setup-haskell@v1.1
-        with:
+      with:
           ghc-version: '8.8.3' 
           enable-stack: true
           stack-version: 'latest'
-      - run: stack test
+      run: stack test
 
     - name: 'Set up HLint'
       uses: rwe/actions-hlint-setup@v1
