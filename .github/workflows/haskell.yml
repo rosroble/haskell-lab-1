@@ -17,12 +17,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-haskell@v1.1
-
-    - name: "Setup Haskell & Run tests"
       with:
-          ghc-version: '8.8.3' 
-          enable-stack: true
-          stack-version: 'latest'
+        ghc-version: '8.8.3' 
+        enable-stack: true
+        stack-version: 'latest'
+
+    - name: 'Run tests'
       run: stack test
 
     - name: 'Set up HLint'
