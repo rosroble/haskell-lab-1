@@ -31,5 +31,7 @@ jobs:
 
     - name: 'Run formatter'
       uses: haskell-actions/run-ormolu@v14
-
+      with:
+        pattern: |
+          src/*.hs
         

@@ -1,7 +1,7 @@
-import Test.HUnit ( assertEqual, runTestTTAndExit, Test(..) )
-
 import Euler1
 import Euler30
+import Test.HUnit (Test (..), assertEqual, runTestTTAndExit)
+
 -----------------------------------------------------------------------------------------
 
 main :: IO ()
@@ -42,13 +42,16 @@ euler30InfList :: Test
 euler30InfList = TestCase (assertEqual "Test assert euler30Inflist" (solveInfList 5 1000000) 443839)
 
 tests :: Test
-tests = TestList [TestLabel "euler1_rec" euler1Rec,
-                    TestLabel "euler1_tail" euler1Tail,
-                    TestLabel "euler1_map" euler1Map,
-                    TestLabel "euler1_listgen" euler1ListGen,
-                    TestLabel "euler1_inflist" euler1InfList,
-                    TestLabel "euler30_rec" euler30Rec,
-                    TestLabel "euler30_tail" euler30Tail,
-                    TestLabel "euler30_map" euler30Map,
-                    TestLabel "euler30_listgen" euler30ListGen,
-                    TestLabel "euler30_inflist" euler30InfList]
+tests =
+  TestList
+    [ TestLabel "euler1_rec" euler1Rec,
+      TestLabel "euler1_tail" euler1Tail,
+      TestLabel "euler1_map" euler1Map,
+      TestLabel "euler1_listgen" euler1ListGen,
+      TestLabel "euler1_inflist" euler1InfList,
+      TestLabel "euler30_rec" euler30Rec,
+      TestLabel "euler30_tail" euler30Tail,
+      TestLabel "euler30_map" euler30Map,
+      TestLabel "euler30_listgen" euler30ListGen,
+      TestLabel "euler30_inflist" euler30InfList
+    ]
