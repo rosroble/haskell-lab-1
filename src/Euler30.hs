@@ -23,13 +23,17 @@ sumPower p arr = powInt (last arr) p + sumPower p (init arr)
 
 solveRec :: Int -> Int -> Int
 solveRec _ 10 = 0
-solveRec p n = solveRec p (n - 1) + if sumPower p (toDigits n) == n then n else 0
+solveRec p n
+  | sumPower p (toDigits n) == n = solveRec p (n - 1) + n
+  | otherwise = solveRec p (n - 1)
 
 solveRecTail :: Int -> Int -> Int
 solveRecTail p n = helper p n 0
   where
     helper _ 10 s = s
-    helper p0 n0 s = helper p0 (n0 - 1) (s + if n0 == sumPower p0 (toDigits n0) then n0 else 0)
+    helper p0 n0 s
+      | n0 == sumPower p0 (toDigits n0) = helper p0 (n0 - 1) (s + n0)
+      | otherwise = helper p0 (n0 - 1) s
 
 solveMap :: Int -> Int -> Int
 solveMap p n = sum $ map snd (filter (uncurry (==)) (map (\x -> (x, sumPower p (toDigits x))) [10 .. n]))
