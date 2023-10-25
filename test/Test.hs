@@ -10,19 +10,19 @@ main = runTestTTAndExit tests
 -----------------------------------------------------------------------------------------
 
 euler1Rec :: Test
-euler1Rec = TestCase (assertEqual "Test assert euler1Rec" (findSumMultiplies3or5below_rec 3 5 1000) 233168)
+euler1Rec = TestCase (assertEqual "Test assert euler1Rec" (findSumMultiplies3or5below_rec [3, 5] 1000) 233168)
 
 euler1Tail :: Test
-euler1Tail = TestCase (assertEqual "Test assert euler1Tail" (findSumMultiplies3or5below_tail 3 5 1000) 233168)
+euler1Tail = TestCase (assertEqual "Test assert euler1Tail" (findSumMultiplies3or5below_tail [3, 5] 1000) 233168)
 
 euler1Map :: Test
-euler1Map = TestCase (assertEqual "Test assert euler1Map" (findSumMultiplies3or5below_map 3 5 1000) 233168)
+euler1Map = TestCase (assertEqual "Test assert euler1Map" (findSumMultiplies3or5below_map [3, 5] 1000) 233168)
 
 euler1ListGen :: Test
-euler1ListGen = TestCase (assertEqual "Test assert euler1ListGen" (findSumMultiplies3or5below_listgen 3 5 1000) 233168)
+euler1ListGen = TestCase (assertEqual "Test assert euler1ListGen" (findSumMultiplies3or5below_listgen [3, 5] 1000) 233168)
 
 euler1InfList :: Test
-euler1InfList = TestCase (assertEqual "Test assert euler1InfList" (findSumMultiplies3or5below_inflist 3 5 1000) 233168)
+euler1InfList = TestCase (assertEqual "Test assert euler1InfList" (findSumMultiplies3or5below_inflist [3, 5] 1000) 233168)
 
 -----------------------------------------------------------------------------------------
 
